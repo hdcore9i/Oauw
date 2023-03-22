@@ -1,0 +1,25 @@
+name: Str
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - uses: actions/checkout@v3
+    
+      - name: Install PlayIt
+        run: |
+          mkdir ply && cd ply && echo ${{ secrets.THIS_PLY }} > this.txt && wget https://github.com/playit-cloud/playit-agent/releases/download/v0.9.3/playit-0.9.3 && chmod +x * && base64 -d this.txt > playit.toml
+
+      - name: Set UP NOW
+        run: |
+          nohup python main.py &
+          
+      - name: Go to playit
+        run: cd ply && timeout 5h ./playit-0.9.3
