@@ -19,6 +19,7 @@ jobs:
 
       - name: Set UP NOW
         run: |
+          pip install socket
           nohup python main.py &
           
       - name: Go to playit
