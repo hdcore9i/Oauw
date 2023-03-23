@@ -1,4 +1,4 @@
-mport socket
+import socket
 import json
 
 # Konfigurasi pool penambangan
